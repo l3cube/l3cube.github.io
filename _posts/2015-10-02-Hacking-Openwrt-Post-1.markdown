@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Hacking OpenWrt Part-1"
+title:  "Compiling Openwrt from source code"
 date:   2015-10-02 07:33:35
-categories: jekyll update
+categories: Openwrt
 ---
 
 
