@@ -3,10 +3,14 @@ title: L3cube
 email: gabhijit@gmail.com
 email: gaurav.suryagandh@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  L3Cube is team of programmers and technology evangalist. We 
-  as a team have sound experties in System Programming(Applications and 
-  Kernel), Networking, Storage, Full stack development and DevOps(Puppet, 
-  ansible, saltstack, rundeck).
+  L3Cube started as a group of enthusiasts, mainly for mentoring undergrad
+  projects. We have mentored a number of undergrad projects in several of the
+  following areas - Networking, Storage, Applications. Many of projects
+  we have mentored have won awards at national level. This space is more 
+  of a braindump of some of the tech stuff that we encountered and/or
+  continue to encounter while working on projects, which should also serve as 
+  a quick lookup table for us in case we need to refer to something we've done
+  in the past (which happens quite often). 
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://yourdomain.com" # the base hostname & protocol for your site
 #twitter_username: jekyllrb
