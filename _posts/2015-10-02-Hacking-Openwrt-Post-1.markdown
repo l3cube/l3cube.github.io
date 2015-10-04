@@ -2,6 +2,7 @@
 layout: post
 title:  "Compiling Openwrt from source code"
 date:   2015-10-02 07:33:35
+author: Gaurav Suryagandh
 categories: Openwrt
 ---
 

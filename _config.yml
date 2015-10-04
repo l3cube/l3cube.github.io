@@ -12,6 +12,9 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://yourdomain.com" # the base hostname & protocol for your site
 #twitter_username: jekyllrb
 github_username:  l3cube
-
 # Build settings
 markdown: kramdown
+gaurav_suryagandh:
+    name: Gaurav Suryagandh
+abhijit_gadgil:
+    name: Abhijit Gadgil
