@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Python Datetime" 
+title:  "Python and SQLite3 Dates"
 date:   2015-10-04 
 author: Abhijit Gadgil
 categories: Python
@@ -13,7 +13,7 @@ I'd be using python `time` and `datetime` modules for this. Python's `time` modu
 
 So here's the problem statement - I have a date string say in the format 'YYYY-MM-DD'. I have to store this as a number in a date field in database. And subequently, I want to be able to read this number and get back the same date in the above format. Regardless of which timezone I run my code in. 
 
-So I quickly wrote a script to do this. I have used `time.mktime` to get the right timestamp. This timestamp will be stored in the DB. The trouble with `time.mktime` is, it doesn't accept timezone as an argument but only works on local timezone. Interestingly, one can use `time.tzset` to set a timezone to appropriate value. [This question on SO](http://stackoverflow.com/questions/530519/stdmktime-and-timezone-info) discusses the same issue and proposes an approach - where you set `TZ` environment variable and then call `time.tzset` to use the 'UTC' timezone, then call a `time.mktime` to get the right tuple. This can then be used with something like `datetime.datetime.utcfromtimestamp` again (or SQLite Datetime function with 'unixepoch' modifier). Below's the code that does this.
+So I quickly wrote a script to do this. I have used `time.mktime` to get the right timestamp. This timestamp will be stored in the DB. The trouble with `time.mktime` is, it doesn't accept timezone as an argument but only works on local timezone. Interestingly, one can use `time.tzset` to set a timezone to appropriate value. [This question on SO](http://stackoverflow.com/questions/530519/stdmktime-and-timezone-info) discusses the same issue and proposes an approach - where you set `TZ` environment variable and then call `time.tzset` to use the 'UTC' timezone, then call a `time.mktime` to get the right ~tuple~ timestamp. This can then be used with something like `datetime.datetime.utcfromtimestamp` again (or SQLite Datetime function with 'unixepoch' modifier). Below's the code that does this.
 
 {% highlight python %}
 # A simple script that uses mktime with right environment set for UTC timestamps
@@ -55,3 +55,8 @@ Datetime(1443978000, 'unixepoch', 'localtime') # takes into consideration local 
 {% endhighlight %}
 
 Hopefully, I don't need to 'understand' this again and can just refer to this post. 
+
+Edit 1: 
+
+Whatever complicated stuff we are doing above in `get_ts_from_datestr` can be done by subtracting the `time.timezone` offset from the output of `time.time`, but I didn't try it in many timezones especially with daylight saving. The approach above should regardless work, though it could be a bit complicated.
+
