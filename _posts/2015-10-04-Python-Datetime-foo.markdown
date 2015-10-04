@@ -15,7 +15,7 @@ So here's the problem statement - I have a date string say in the format 'YYYY-M
 
 So I quickly wrote a script to do this. I have used `time.mktime` to get the right timestamp. This timestamp will be stored in the DB. The trouble with `time.mktime` is, it doesn't accept timezone as an argument but only works on local timezone. Interestingly, one can use `time.tzset` to set a timezone to appropriate value. [This question on SO](http://stackoverflow.com/questions/530519/stdmktime-and-timezone-info) discusses the same issue and proposes an approach - where you set `TZ` environment variable and then call `time.tzset` to use the 'UTC' timezone, then call a `time.mktime` to get the right tuple. This can then be used with something like `datetime.datetime.utcfromtimestamp` again (or SQLite Datetime function with 'unixepoch' modifier). Below's the code that does this.
 
-```python
+{% highlight python %}
 # A simple script that uses mktime with right environment set for UTC timestamps
 import os
 import time
@@ -44,13 +44,14 @@ def get_datestr_from_ts(ts, fmt='%Y-%m-%d'):
 # To run the script, don't forget to pass the date as command like argument 
 print get_datestr_from_ts(time.mktime(time.strptime(sys.argv[1],'%Y-%m-%d')), '%Y-%m-%d')
 print get_datestr_from_ts(get_ts_for_datestr(sys.argv[1],'%Y-%m-%d'), '%Y-%m-%d')
-```
+
+{% endhighlight %}
 
 Most of the code is self explanatory. In place of the `get_datestr_from_ts`  above, we could directly use SQlite functions as follows 
 
-```sqlite3
+{% highlight sqlite3 %}
 Datetime(1443978000, 'unixepoch') # Does what we've done above
 Datetime(1443978000, 'unixepoch', 'localtime') # takes into consideration local time as well
-```
+{% endhighlight %}
 
 Hopefully, I don't need to 'understand' this again and can just refer to this post. 
