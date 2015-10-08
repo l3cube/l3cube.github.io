@@ -1,12 +1,11 @@
 ---
 layout: post
-title:  "Python, BGP RIB Table and IP Lookup
+title:  Python, BGP RIB Table and IP Lookup
 date:   2015-10-06
 author: Abhijit Gadgil
 categories: Python
 tags: python, numpy, iplookup
 ---
-
 
 Recently, I was looking at the RadixIPLookup element in [Click](http://www.read.cs.ucla.edu/click/elements) about an implementation of a routing table, which could do very fast lookup on a routing table of about 167K entries. I was looking at another fast IP lookup for a related problem at work - though not on such a large table size and the problem was that of a fixed match, so a simple hash table should suffice. Interestingly a while back I'd looked at some of the datasets from [caida.org](http://data.caida.org/datasets/) while I was looking around about net neutrality. Specifically I was looking at whether there's any data that could tell me what percentage of IP addresses are local to a country (say India). 
 
